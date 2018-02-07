@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <functional>
 #include "../Macro.h"
 #include "../Types.h"
 #include "VertexFormat.h"

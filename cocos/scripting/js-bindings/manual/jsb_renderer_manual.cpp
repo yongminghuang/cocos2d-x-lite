@@ -1,7 +1,7 @@
 #include "jsb_renderer_manual.hpp"
 #include "cocos/scripting/js-bindings/auto/jsb_renderer_auto.hpp"
 #include "cocos/scripting/js-bindings/manual/jsb_conversions.hpp"
-#include "Renderer.h"
+// #include "Renderer.h"
 #include "renderer/INode.h"
 
 using namespace cocos2d;

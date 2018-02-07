@@ -34,16 +34,7 @@ THE SOFTWARE.
 #endif
 
 #include "platform/CCStdC.h"
-
-namespace cocos2d
-{
-
-void log(const char * format, ...)
-{
-    //TODO:
-}
-}
-
+#include "base/ccUtils.h"
 
 
 #ifndef CCASSERT

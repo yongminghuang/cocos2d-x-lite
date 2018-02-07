@@ -52,6 +52,8 @@ Examples:
 
 int ccNextPOT(int value);
 
+void log(const char * format, ...);
+
 class Image;
 
 namespace utils

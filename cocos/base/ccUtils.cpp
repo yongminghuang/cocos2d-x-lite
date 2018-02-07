@@ -34,6 +34,11 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
+void log(const char * format, ...)
+{
+    
+}
+
 int ccNextPOT(int x)
 {
     x = x - 1;
