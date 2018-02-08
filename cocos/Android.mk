@@ -81,15 +81,16 @@ renderer/renderer/View.cpp \
 renderer/renderer/ForwardRenderer.cpp \
 ../external/sources/firefox/WebGLFormats.cpp \
 ../external/sources/firefox/WebGLTexelConversions.cpp \
-../external/sources/firefox/mozilla/Assertions.cpp
+../external/sources/firefox/mozilla/Assertions.cpp \
+../external/sources/xxtea/xxtea.cpp \
+../external/sources/tinyxml2/tinyxml2.cpp \
+../external/sources/unzip/ioapi_mem.cpp \
+../external/sources/unzip/ioapi.cpp \
+../external/sources/unzip/unzip.cpp \
+../external/sources/ConvertUTF/ConvertUTFWrapper.cpp \
+../external/sources/ConvertUTF/ConvertUTF.c
 
 # storage/local-storage/LocalStorage-android.cpp \
-# ../external/sources/ConvertUTF/ConvertUTFWrapper.cpp \
-# ../external/sources/ConvertUTF/ConvertUTF.c \
-# ../external/sources/tinyxml2/tinyxml2.cpp \
-# ../external/sources/unzip/ioapi_mem.cpp \
-# ../external/sources/unzip/ioapi.cpp \
-# ../external/sources/unzip/unzip.cpp \
 # ../external/sources/edtaa3func/edtaa3func.cpp \
 # ../external/sources/xxhash/xxhash.c \
 # ../external/sources/poly2tri/common/shapes.cc \
@@ -145,7 +146,7 @@ renderer/renderer/ForwardRenderer.cpp \
 # ../external/sources/Box2D/Dynamics/b2WorldCallbacks.cpp \
 # ../external/sources/Box2D/Rope/b2Rope.cpp \
 # ../external/sources/Box2D/b2ObjectDestroyNotifier.cpp \
-# ../external/sources/xxtea/xxtea.cpp \
+
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/platform \

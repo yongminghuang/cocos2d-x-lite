@@ -33,7 +33,9 @@ LOCAL_SRC_FILES := ../auto/jsb_gfx_auto.cpp \
                    ../jswrapper/v8/inspector_socket_server.cc \
                    ../jswrapper/v8/node.cc \
                    ../jswrapper/v8/node_debug_options.cc \
-                   ../jswrapper/v8/util.cc
+                   ../jswrapper/v8/util.cc \
+                   ../jswrapper/v8/http_parser.c \
+                   ../jswrapper/v8/SHA1.cpp
 
 
 # LOCAL_SRC_FILES := \
