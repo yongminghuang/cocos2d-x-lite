@@ -2,6 +2,7 @@
 Copyright (c) 2010      Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -26,13 +27,13 @@ THE SOFTWARE.
 
 #include "base/CCConfiguration.h"
 #include "platform/CCFileUtils.h"
-//cjh #include "base/CCEventCustom.h"
-//cjh #include "base/CCDirector.h"
-//cjh #include "base/CCEventDispatcher.h"
+#include "base/CCEventCustom.h"
+#include "base/CCDirector.h"
+#include "base/CCEventDispatcher.h"
 
 NS_CC_BEGIN
 
-//cjh extern const char* cocos2dVersion();
+extern const char* cocos2dVersion();
 
 Configuration* Configuration::s_sharedConfiguration = nullptr;
 
@@ -59,12 +60,12 @@ Configuration::Configuration()
 , _maxPointLightInShader(1)
 , _maxSpotLightInShader(1)
 {
-//cjh    _loadedEvent = new (std::nothrow) EventCustom(CONFIG_FILE_LOADED);
+    _loadedEvent = new (std::nothrow) EventCustom(CONFIG_FILE_LOADED);
 }
 
 bool Configuration::init()
 {
-//cjh    _valueDict["cocos2d.x.version"] = Value(cocos2dVersion());
+    _valueDict["cocos2d.x.version"] = Value(cocos2dVersion());
 
 
 #if CC_ENABLE_PROFILERS
@@ -90,7 +91,7 @@ bool Configuration::init()
 
 Configuration::~Configuration()
 {
-//cjh    CC_SAFE_RELEASE(_loadedEvent);
+    CC_SAFE_RELEASE(_loadedEvent);
 }
 
 std::string Configuration::getInfo() const
@@ -381,7 +382,7 @@ void Configuration::loadConfigFile(const std::string& filename)
     else
         _valueDict[name] = Value(_maxSpotLightInShader);
 
-//cjh    Director::getInstance()->getEventDispatcher()->dispatchEvent(_loadedEvent);
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(_loadedEvent);
 }
 
 NS_CC_END

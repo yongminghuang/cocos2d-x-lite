@@ -31,6 +31,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "base/CCEventDispatcher.h"
 #include "platform/CCFileUtils.h"
 #include "network/CCDownloader.h"
 
@@ -286,7 +287,7 @@ private:
     std::string _eventName;
     
     //! Reference to the global event dispatcher
-//    EventDispatcher *_eventDispatcher;
+    EventDispatcher *_eventDispatcher;
     //! Reference to the global file utils
     FileUtils *_fileUtils;
     

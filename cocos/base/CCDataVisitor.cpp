@@ -24,6 +24,14 @@
  ****************************************************************************/
 
 #include "base/CCRef.h"
+#include "deprecated/CCBool.h"
+#include "deprecated/CCInteger.h"
+#include "deprecated/CCFloat.h"
+#include "deprecated/CCDouble.h"
+#include "deprecated/CCString.h"
+#include "deprecated/CCArray.h"
+#include "deprecated/CCDictionary.h"
+#include "deprecated/CCSet.h"
 
 NS_CC_BEGIN
 
