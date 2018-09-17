@@ -53,6 +53,8 @@ public class Cocos2dxEditBox {
     private String mButtonTitle = null;
     private boolean mConfirmHold = true;
     private Cocos2dxActivity mActivity = null;
+    private int mEditTextID = 1;
+    private int mButtonID = 2;
 
     /***************************************************************************************
      Inner class.
@@ -144,8 +146,11 @@ public class Cocos2dxEditBox {
             } else if (confirmType.contentEquals("send")) {
                 this.setImeOptions(EditorInfo.IME_ACTION_SEND | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
                 mButtonTitle = mActivity.getResources().getString(R.string.send);
-            } else
+            } else{
+                mButtonTitle = null;
                 Log.e(TAG, "unknown confirm type " + confirmType);
+            }
+
         }
 
         private void setInputType(final String inputType, boolean isMultiLine){
@@ -241,14 +246,21 @@ public class Cocos2dxEditBox {
     private void addEditText(Cocos2dxActivity context, RelativeLayout layout) {
         mEditText = new Cocos2dxEditText(context);
         mEditText.setVisibility(View.INVISIBLE);
-        layout.addView(mEditText, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mEditText.setId(mEditTextID);
+        RelativeLayout.LayoutParams editParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        editParams.addRule(RelativeLayout.LEFT_OF,mButtonID);
+        layout.addView(mEditText, editParams);
     }
 
     private void addButton(Cocos2dxActivity context, RelativeLayout layout) {
         mButton = new Button(context);
         mButton.setVisibility(View.INVISIBLE);
+        mButton.setId(mButtonID);
         RelativeLayout.LayoutParams buttonParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        buttonParams.addRule(RelativeLayout.ALIGN_BOTTOM, mEditTextID);
+        buttonParams.addRule(RelativeLayout.ALIGN_TOP, mEditTextID);
         mButton.setTextColor(Color.WHITE);
         mButton.setBackgroundColor(DARK_GREEN);
         layout.addView(mButton, buttonParams);
