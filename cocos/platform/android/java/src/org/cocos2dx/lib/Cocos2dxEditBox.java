@@ -36,6 +36,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -173,7 +174,7 @@ public class Cocos2dxEditBox {
                 this.setImeOptions(EditorInfo.IME_ACTION_SEND | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
                 mButtonTitle = mActivity.getResources().getString(R.string.send);
             } else{
-                mButtonTitle = mActivity.getResources().getString(R.string.done);
+                mButtonTitle = null;
                 Log.e(TAG, "unknown confirm type " + confirmType);
             }
         }
@@ -356,17 +357,16 @@ public class Cocos2dxEditBox {
         int editPaddingBottom = mEditText.getPaddingBottom();
         int editPadding = mEditText.getPaddingTop();
         mEditText.setPadding(editPadding, editPadding, editPadding, editPaddingBottom);
-        if (isMultiline) {
+        mButton.setText(mButtonTitle);
+        if (TextUtils.isEmpty(mButtonTitle)) {
+            mButton.setPadding(0, 0, 0, 0);
+            mButtonParams.setMargins(0, 0, 0, 0);
+            mButtonLayout.setVisibility(View.INVISIBLE);
+        } else {
             int buttonTextPadding = mEditText.getPaddingBottom() / 2;
             mButton.setPadding(editPadding, buttonTextPadding, editPadding, buttonTextPadding);
             mButtonParams.setMargins(0, buttonTextPadding, 2, 0);
             mButtonLayout.setVisibility(View.VISIBLE);
-            mButton.setText(mButtonTitle);
-        } else {
-            mButton.setPadding(0, 0, 0, 0);
-            mButtonParams.setMargins(0, 0, 0, 0);
-            mButtonLayout.setVisibility(View.INVISIBLE);
-            mButton.setText(null);
         }
         mActivity.getGLSurfaceView().setStopHandleTouchAndKeyEvents(true);
         this.openKeyboard();
