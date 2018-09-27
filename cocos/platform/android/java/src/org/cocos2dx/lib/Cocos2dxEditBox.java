@@ -25,6 +25,7 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.lib;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -45,6 +46,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -80,16 +82,14 @@ public class Cocos2dxEditBox {
         private int mLineColor = DARK_GREEN;
         private float mLineWidth = 2f;
         private boolean keyboardVisible = false;
-        private float keyboardMinHeight;
+        private int mScreenHeight;
 
         public  Cocos2dxEditText(Cocos2dxActivity context){
             super(context);
             //remove focus border
             this.setBackground(null);
-            //dp To px
-            DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-            keyboardMinHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    200, metrics);
+            mScreenHeight = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).
+                    getDefaultDisplay().getHeight();
             mPaint = new Paint();
             mPaint.setStrokeWidth(mLineWidth);
             mPaint.setStyle(Paint.Style.FILL);
@@ -227,8 +227,8 @@ public class Cocos2dxEditBox {
                     Rect r = new Rect();
                     getWindowVisibleDisplayFrame(r);
                     int heightDiff = getRootView().getHeight() - (r.bottom - r.top);
-                    // if more than 200 dx, its probably a keyboard
-                    if (heightDiff > keyboardMinHeight) {
+                    // if more than a quarter of the screen, its probably a keyboard
+                    if (heightDiff > mScreenHeight/4) {
                         if (!keyboardVisible) {
                             keyboardVisible = true;
                         }
